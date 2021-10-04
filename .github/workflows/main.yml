@@ -43,5 +43,5 @@ jobs:
         uses: Azure/k8s-set-context@v1.1
         with:
           method: kubeconfig
-          kubeconfig: ${{ secret.KUBECONFIG_DIGITAL_OCEAN }}
+          kubeconfig: ${{ secrets.KUBECONFIG_DIGITAL_OCEAN }}
  
