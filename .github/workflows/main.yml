@@ -31,6 +31,9 @@ jobs:
             desenvolvimentovitoria/conversao-peso:v${{ github.run_number }}
         
   CD:
+    # Precisa que o CI termine antes de executar
+    needs: [CI]
+    
     runs-on: ubuntu-latest
     
     steps:
@@ -39,7 +42,6 @@ jobs:
       - name: Kubernetes set context
         uses: Azure/k8s-set-context@v1.1
         with:
-          cluster-type: # default is generic
           method: kubeconfig
           kubeconfig: ${{ secret.KUBECONFIG_DIGITAL_OCEAN }}
  
