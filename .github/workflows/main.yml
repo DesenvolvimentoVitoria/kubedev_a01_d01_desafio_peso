@@ -41,12 +41,5 @@ jobs:
         with:
           cluster-type: # default is generic
           method: kubeconfig
-          kubeconfig: 
-          context: # optional, default is 
-          k8s-url: # optional, default is 
-          k8s-secret: # optional, default is 
-          token: # optional, default is 
-          resource-group: # optional, default is 
-          cluster-name: # optional, default is 
-
-  
+          kubeconfig: ${{ secret.KUBECONFIG_DIGITAL_OCEAN }}
+ 
