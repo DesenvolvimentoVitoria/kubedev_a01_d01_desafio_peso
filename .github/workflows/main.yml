@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  CI:
     # Sistema do ambiente de produção com UBUNTU
     runs-on: ubuntu-latest
 
@@ -30,4 +30,23 @@ jobs:
             desenvolvimentovitoria/conversao-peso:latest
             desenvolvimentovitoria/conversao-peso:v${{ github.run_number }}
         
+  CD:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Kubernetes set context
+        uses: Azure/k8s-set-context@v1.1
+        with:
+          cluster-type: # default is generic
+          method: kubeconfig
+          kubeconfig: 
+          context: # optional, default is 
+          k8s-url: # optional, default is 
+          k8s-secret: # optional, default is 
+          token: # optional, default is 
+          resource-group: # optional, default is 
+          cluster-name: # optional, default is 
 
+  
